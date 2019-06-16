@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>StaticInterface</id>
+    <version>0.1.0</version>
+    <authors>Domja</authors>
+    <owners>Domja</owners>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/dominik-janata/static-interface</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>StaticInterface is a library working the concept of static interfaces missing in C# around.</description>
+    <releaseNotes>A proof of concept.</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>StaticInterface Library</tags>
+    <dependencies />
+  </metadata>
+  <files>
+    <file src="bin\Release\StaticInterface.dll" target="lib\net46\StaticInterface.dll" />
+  </files>
+</package>
