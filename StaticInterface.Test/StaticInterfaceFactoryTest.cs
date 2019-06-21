@@ -32,7 +32,7 @@ namespace StaticInterface.UnitTest
         public void CreateGeneric_AnyParam_ReturnsInstanceOfType_IfInitializationSucceeds2()
         {
             // Arrange & Act
-            ConstructibleFromInt result = StaticInterfaceFactory.Create<ConstructibleFromInt, int>(2);
+            ConstructibleFromInt result = StaticInterfaceFactory<int>.Create<ConstructibleFromInt>(2);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ConstructibleFromInt));
@@ -43,7 +43,7 @@ namespace StaticInterface.UnitTest
         public void CreateNonGeneric_AnyParam_ReturnsInstanceOfType_IfInitializationSucceeds2()
         {
             // Arrange & Act
-            IConstructible<int> result = StaticInterfaceFactory.Create<int>(typeof(ConstructibleFromInt), 2);
+            IConstructible<int> result = StaticInterfaceFactory<int>.Create(typeof(ConstructibleFromInt), 2);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ConstructibleFromInt));

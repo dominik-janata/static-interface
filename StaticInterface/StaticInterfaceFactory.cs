@@ -20,22 +20,7 @@ namespace StaticInterface
             return result;
         }
 
-        public static TConstructible Create<TConstructible, TParameter>(TParameter parameter)
-            where TConstructible : class, IConstructible<TParameter>, new()
-        {
-            var result = new TConstructible();
-            result.Initialize(parameter);
-            return result;
-        }
-
-        public static IConstructible<TParameter> Create<TParameter>(Type constructibleType, TParameter parameter)
-        {
-            var result = CreateFromParamlessCtor<IConstructible<TParameter>>(constructibleType);
-            result.Initialize(parameter);
-            return result;
-        }
-
-        private static TResultInterface CreateFromParamlessCtor<TResultInterface>(Type constructibleType)
+        internal static TResultInterface CreateFromParamlessCtor<TResultInterface>(Type constructibleType)
         {
             if (!constructibleType.GetInterfaces().Contains(typeof(TResultInterface)))
             {
@@ -49,6 +34,24 @@ namespace StaticInterface
             }
 
             TResultInterface result = (TResultInterface)ctor.Invoke(new object[0]);
+            return result;
+        }
+    }
+
+    public static class StaticInterfaceFactory<TParameter>
+    {
+        public static TConstructible Create<TConstructible>(TParameter parameter)
+            where TConstructible : class, IConstructible<TParameter>, new()
+        {
+            var result = new TConstructible();
+            result.Initialize(parameter);
+            return result;
+        }
+
+        public static IConstructible<TParameter> Create(Type constructibleType, TParameter parameter)
+        {
+            var result = StaticInterfaceFactory.CreateFromParamlessCtor<IConstructible<TParameter>>(constructibleType);
+            result.Initialize(parameter);
             return result;
         }
     }
